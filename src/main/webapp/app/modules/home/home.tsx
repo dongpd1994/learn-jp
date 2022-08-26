@@ -71,7 +71,7 @@ export const Home = () => {
                 onClick={() => { setRSelected(LESSION_JP[e].key); setSource(LESSION_JP[e].source); setData([]) }}
                 active={rSelected === LESSION_JP[e].key}
               >
-                {_.get(LESSION_JP[e], "title")}
+                {_.get(LESSION_JP[e], "title")} {`(${Object.keys(LESSION_JP[e].source).length})`}
               </Button>
             )
           })

@@ -22,10 +22,10 @@ const baseHref = document.querySelector('base').getAttribute('href').replace(/\/
 export const App = () => {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getSession());
-    dispatch(getProfile());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getSession());
+  //   dispatch(getProfile());
+  // }, []);
 
   const isAuthenticated = useAppSelector(state => state.authentication.isAuthenticated);
   const isAdmin = useAppSelector(state => hasAnyAuthority(state.authentication.account.authorities, [AUTHORITIES.ADMIN]));

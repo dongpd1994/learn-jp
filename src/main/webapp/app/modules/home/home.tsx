@@ -42,11 +42,11 @@ export const Home = () => {
           })
         } else {
           tmpData.push({
-            k: _.get(source[keySource], "spelling"),
-            v: _.get(source[keySource], "jp"),
+            s: _.get(source[keySource], "spelling"),
+            j: _.get(source[keySource], "jp"),
             t: _.get(source[keySource], "translate_vn"),
-            v_o: _.get(source[keySource], "other.jp") ?? null,
-            k_o: _.get(source[keySource], "other.spelling") ?? null,
+            o_j: _.get(source[keySource], "other.jp") ?? null,
+            o_s: _.get(source[keySource], "other.spelling") ?? null,
           })
         }
 
@@ -108,9 +108,9 @@ export const Home = () => {
         if (mode === MODE_CHECK.JP) {
           return (<>
             <div className='hiragana-item'>
-              <span className='hiragana-k'>{i + 1} - {e.v} {_.get(e, "v_o") ? `(${_.get(e, "v_o")})` : ""}</span>
+              <span className='hiragana-k'>{i + 1} - {e.j} {_.get(e, "o_j") ? `(${_.get(e, "o_j")})` : ""}</span>
               {finishCheckFlag && <>
-                <span className='hiragana-v'>{e.k} {_.get(e, "k_o") ? `(${_.get(e, "k_o")})` : ""}</span>
+                <span className='hiragana-v'>{e.s} {_.get(e, "o_s") ? `(${_.get(e, "o_s")})` : ""}</span>
                 <span className='hiragana-v'>{e.t}</span>
               </>
               }
@@ -119,9 +119,9 @@ export const Home = () => {
         } else if (mode === MODE_CHECK.SPELLING) {
           return (<>
             <div className='hiragana-item'>
-              <span className='hiragana-k'>{i + 1} - {e.k} {_.get(e, "k_o") ? `(${_.get(e, "k_o")})` : ""}</span>
+              <span className='hiragana-k'>{i + 1} - {e.s} {_.get(e, "o_s") ? `(${_.get(e, "o_s")})` : ""}</span>
               {finishCheckFlag && <span className='hiragana-v'>
-                <div>{e.v} {_.get(e, "v_o") ? `(${_.get(e, "v_o")})` : ""}</div>
+                <div>{e.j} {_.get(e, "o_j") ? `(${_.get(e, "o_j")})` : ""}</div>
                 <div className='hiragana-v'>{e.t}</div>
               </span>
               }
@@ -132,8 +132,12 @@ export const Home = () => {
             <div className='hiragana-item'>
               <span className='hiragana-k'>{i + 1} - {e.t}</span>
               {finishCheckFlag && <>
-                <span className='hiragana-v'>{e.k} {_.get(e, "k_o") ? `(${_.get(e, "k_o")})` : ""}</span>
-                <span className='hiragana-v'>{e.v} {_.get(e, "v_o") ? `(${_.get(e, "v_o")})` : ""}</span>
+                <div>
+                  <span className='hiragana-v'>{e.j} {_.get(e, "s") ? `(${_.get(e, "s")})` : ""}</span>
+                </div>
+                <div>
+                  <span className='hiragana-v'>{_.get(e, "o_j")} {_.get(e, "o_s") ? `(${_.get(e, "o_s")})` : ""}</span>
+                </div>
               </>
               }
             </div>

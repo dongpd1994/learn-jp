@@ -3,8 +3,6 @@ import NEW_SENTENCE from './new-sentence.json'
 import OTHER from './other.json'
 import _ from 'lodash'
 
+export const LESSON1 = _.assign(NEW_WORD, NEW_SENTENCE, OTHER)
 
-
-export const LESSON = _.assign(NEW_WORD, NEW_SENTENCE, OTHER)
-
-export default LESSON
+export default LESSON1
